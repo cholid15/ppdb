@@ -207,7 +207,7 @@
         <div class="collapse navbar-collapse" id="navbar-menu">
             <div class="navbar">
                 <div class="container-xl">
-                    <?= view_cell('App\Cells\Component\navbarCell') ?>
+                    <?= view_cell('App\Cells\Component\navbarCell', ['roles' => auth()->user()->getGroups()]) ?>
                 </div>
             </div>
         </div>

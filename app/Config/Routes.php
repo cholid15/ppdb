@@ -29,9 +29,49 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+service('auth')->routes($routes);
 $routes->get('/', 'Home::index');
+$routes->get('afterlogin', 'Home::afterLogin');
+// $routes->get('admin/dashboard', 'Home::admin');
+// $routes->get('statistik', 'Home::siswa');
+$routes->get('statistik', 'Home::admin');
+
+
+
+
+$routes->get('gelombang_satu', 'Gelombang::satu');
 $routes->get('form', 'Form::index');
 $routes->post('ppdb/simpan', 'Form::simpan');
+
+$routes->group('ppdb', function ($routes) {
+    // tambah pendaftar
+    $routes->get('form', 'Form::index', ['as' => 'ppdb.form']);
+    $routes->post('simpan', 'Form::simpan', ['as' => 'ppdb_simpan']);
+
+    // daftar calon siswa
+    $routes->get('daftar', 'Form::daftar', ['as' => 'ppdb.daftar']);
+
+    // detail calon siswa 
+    $routes->get('detail/(:num)', 'Form::detail/$1', ['as' => 'ppdb.detail']);
+
+    // update data
+    $routes->post('update/(:num)', 'Form::update/$1');
+
+
+
+    // gelombang
+    $routes->get('gelombang_satu', 'Gelombang::satu', ['as' => 'ppdb.gelombang_satu']);
+
+
+    $routes->get('form_gelombang/(:num)', 'Gelombang::form_gelombang/$1', ['as' => 'ppdb.form_gelombang']);
+    $routes->post('submit_gelombang_form', 'Gelombang::simpan');
+
+
+
+    $routes->get('calon-siswa', 'calonSiswa::calonSiswa');
+});
+
+
 
 
 /*

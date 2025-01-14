@@ -30,6 +30,20 @@
     body {
         font-feature-settings: "cv03", "cv04", "cv11";
     }
+
+    /* Default footer style with opacity */
+    .footer {
+        opacity: 1;
+        transition: opacity 0.5s ease-in-out;
+        /* Smooth transition for opacity */
+    }
+
+    /* When hidden */
+    .footer-hidden {
+        opacity: 0;
+        pointer-events: none;
+        /* Prevent interaction when hidden */
+    }
     </style>
     <?= $this->renderSection('style'); ?>
 </head>
@@ -39,7 +53,11 @@
     <div class="page">
         <!-- Navbar -->
         <?= $this->include('Layout/navbar-1') ?>
-        <!-- <= view_cell('App\Cells\Main\sideBarCell') ?> -->
+
+
+
+
+
 
 
         <div class="page-wrapper">
@@ -50,7 +68,7 @@
                 <!-- Footer -->
             </div>
 
-            <footer class="footer footer-transparent d-print-none">
+            <footer class="footer footer-transparent d-print-none footer-hidden">
                 <div class="container-xl">
                     <div class="row text-center align-items-center flex-row-reverse">
                         <div class="col-lg-auto ms-lg-auto">

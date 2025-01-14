@@ -34,6 +34,10 @@
                     <a href="#waliSiswa" class="list-group-item list-group-item-action">
                         4. Wali Siswa
                     </a>
+
+                    <a href="#uploadFile" class="list-group-item list-group-item-action">
+                        4. Upload File
+                    </a>
                 </div>
             </div>
         </div>
@@ -57,7 +61,8 @@
                         </div>
                     <?php endif; ?>
 
-                    <form action="<?= base_url('ppdb/simpan') ?>" method="POST" id="dataForm">
+                    <form action="<?= base_url('ppdb/simpan') ?>" method="POST" id="dataForm"
+                        enctype="multipart/form-data">
                         <?= csrf_field() ?>
 
                         <!-- Biodata -->
@@ -65,18 +70,18 @@
                             <h4 class="card-title">Biodata</h4>
                         </div>
                         <div class="row mt-3" id="biodataRow">
-                            <div class="col-6 mb-3">
+                            <!-- <div class="col-6 mb-3">
                                 <label class="form-label">No Pendaftaran</label>
                                 <input type="text"
-                                    class="form-control <?= (session('errors.no_pendaftaran')) ? 'is-invalid' : '' ?>"
+                                    class="form-control <= (session('errors.no_pendaftaran')) ? 'is-invalid' : '' ?>"
                                     name="no_pendaftaran" placeholder="Masukkan Nomor Pendaftaran"
-                                    value="<?= old('no_pendaftaran') ?>">
+                                    value="<= old('no_pendaftaran') ?>">
                                 <div class="invalid-feedback">
-                                    <?= session('errors.no_pendaftaran') ?>
+                                    <= session('errors.no_pendaftaran') ?>
                                 </div>
-                            </div>
+                            </div> -->
 
-                            <div class="col-6 mb-3">
+                            <div class="col-12 mb-3">
                                 <label class="form-label">Pilih Sekolah</label>
                                 <select class="form-select <?= (session('errors.id_sekolah')) ? 'is-invalid' : '' ?>"
                                     name="id_sekolah">
@@ -290,7 +295,7 @@
                                 <label class="form-label">Email</label>
                                 <input type="text"
                                     class="form-control <?= (session('errors.email')) ? 'is-invalid' : '' ?>"
-                                    name="email" placeholder="Masukkan Email" required value="<?= old('email') ?>">
+                                    name="email" placeholder="Masukkan Email" value="<?= old('email') ?>">
                                 <div class="invalid-feedback">
                                     <?= session('errors.email') ?>
                                 </div>
@@ -643,8 +648,260 @@
                                         juta - 20 juta</option>
                                 </select>
                             </div>
-
                         </div>
+
+                        <!-- Wali Siswa -->
+                        <div class="card-header" id="uploadFile">
+                            <h4 class="card-title">Cek File</h4>
+                        </div>
+                        <div class="row mt-3">
+
+                            <div class="col-6 mb-3">
+                                <div class="form-label">Pass Foto</div>
+                                <div>
+                                    <label class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="passfoto" value="Ya">
+                                    </label>
+                                </div>
+                            </div>
+
+
+                            <div class="col-6 mb-3">
+                                <div class="form-label">Akta Kelahiran</div>
+                                <div>
+                                    <label class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="akta_kelahiran"
+                                            value="Ya">
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-6 mb-3">
+                                <div class="form-label">Kartu Keluarga</div>
+                                <div>
+                                    <label class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="kk" value="Ya">
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-6 mb-3">
+                                <div class="form-label">Ijazah</div>
+                                <div>
+                                    <label class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="ijazah" value="Ya">
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-6 mb-3">
+                                <div class="form-label">Kartu NISN</div>
+                                <div>
+                                    <label class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="passfoto" value="Ya">
+                                    </label>
+                                </div>
+                            </div>
+
+
+                            <div class="col-6 mb-3">
+                                <div class="form-label">Raport Semester 1 s.d 5</div>
+                                <div>
+                                    <label class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="raport" value="Ya">
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-6 mb-3">
+                                <div class="form-label">KIP</div>
+                                <div>
+                                    <label class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="kip" value="Ya">
+                                    </label>
+                                </div>
+                            </div>
+
+
+                            <div class="col-6 mb-3">
+                                <div class="form-label">KTP Orang Tua</div>
+                                <div>
+                                    <label class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="ktp_ortu" value="Ya">
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-6 mb-3">
+                                <div class="form-label">Fotocopy Akte Kematian Orang Tua</div>
+                                <div>
+                                    <label class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="akte_kematian" value="Ya">
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-6 mb-3">
+                                <div class="form-label">Bukti Bayar</div>
+                                <div>
+                                    <label class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="bukti_bayar" value="Ya">
+                                    </label>
+                                </div>
+                            </div>
+
+
+                            <!-- <div class="col-6 mb-3">
+                                <div class="form-label">Pass Foto</div>
+                                <div>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="passfoto" value="Ya">
+                                        <span class="form-check-label">Iya</span>
+                                    </label>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="passfoto" value="Tidak">
+                                        <span class="form-check-label">Tidak</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-6 mb-3">
+                                <div class="form-label">Akta Kelahiran</div>
+                                <div>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="akta_kelahiran" value="Ya">
+                                        <span class="form-check-label">Iya</span>
+                                    </label>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="akta_kelahiran"
+                                            value="Tidak">
+                                        <span class="form-check-label">Tidak</span>
+                                    </label>
+                                </div>
+                            </div>
+
+
+                            <div class="col-6 mb-3">
+                                <div class="form-label">Kartu Keluarga</div>
+                                <div>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="kk" value="Ya">
+                                        <span class="form-check-label">Iya</span>
+                                    </label>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="kk" value="Tidak">
+                                        <span class="form-check-label">Tidak</span>
+                                    </label>
+                                </div>
+                            </div>
+
+
+                            <div class="col-6 mb-3">
+                                <div class="form-label">Ijazah</div>
+                                <div>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="ijazah" value="Ya">
+                                        <span class="form-check-label">Iya</span>
+                                    </label>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="ijazah" value="Tidak">
+                                        <span class="form-check-label">Tidak</span>
+                                    </label>
+                                </div>
+                            </div>
+
+
+                            <div class="col-6 mb-3">
+                                <div class="form-label">Kartu NISN</div>
+                                <div>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="kartu_nisn" value="Ya">
+                                        <span class="form-check-label">Iya</span>
+                                    </label>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="kartu_nisn" value="Tidak">
+                                        <span class="form-check-label">Tidak</span>
+                                    </label>
+                                </div>
+                            </div>
+
+
+                            <div class="col-6 mb-3">
+                                <div class="form-label">Raport Semester 1 s.d 5</div>
+                                <div>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="raport" value="Ya">
+                                        <span class="form-check-label">Iya</span>
+                                    </label>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="raport" value="Tidak">
+                                        <span class="form-check-label">Tidak</span>
+                                    </label>
+                                </div>
+                            </div>
+
+
+                            <div class="col-6 mb-3">
+                                <div class="form-label">Fotocopy KIP</div>
+                                <div>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="kip" value="Ya">
+                                        <span class="form-check-label">Iya</span>
+                                    </label>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="kip" value="Tidak">
+                                        <span class="form-check-label">Tidak</span>
+                                    </label>
+                                </div>
+                            </div>
+
+
+                            <div class="col-6 mb-3">
+                                <div class="form-label">Fotocopy KTP Orang Tua</div>
+                                <div>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="ktp_ortu" value="Ya">
+                                        <span class="form-check-label">Iya</span>
+                                    </label>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="ktp_ortu" value="Tidak">
+                                        <span class="form-check-label">Tidak</span>
+                                    </label>
+                                </div>
+                            </div>
+
+
+                            <div class="col-6 mb-3">
+                                <div class="form-label">Fotocopy Akte Kematian Orang tua</div>
+                                <div>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="akte_kematian" value="Ya">
+                                        <span class="form-check-label">Iya</span>
+                                    </label>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="akte_kematian" value="Tidak">
+                                        <span class="form-check-label">Tidak</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-6 mb-3">
+                                <div class="form-label">Bukti Pemnbayaran</div>
+                                <div>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="bukti_bayar" value="Ya">
+                                        <span class="form-check-label">Iya</span>
+                                    </label>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="bukti_bayar" value="Tidak">
+                                        <span class="form-check-label">Tidak</span>
+                                    </label>
+                                </div>
+                            </div> -->
+                        </div>
+
+
+
 
                         <!-- Submit Button -->
                         <div class="mt-4">
@@ -721,6 +978,39 @@
         flatpickr("#tgl_lahir_wali", {
             dateFormat: "Y-m-d", // Format tanggal
             maxDate: "today", // Tidak boleh memilih tanggal setelah hari ini
+        });
+    });
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+        // Pilih semua input file di dalam form
+        const fileInputs = document.querySelectorAll('input[type="file"]');
+
+        // Iterasi setiap input file
+        fileInputs.forEach(input => {
+            input.addEventListener('change', function(event) {
+                const files = event.target.files; // Ambil file yang diunggah
+                if (files.length > 0) {
+                    const file = files[0]; // Ambil file pertama
+                    console.log(`File Name: ${file.name}`); // Nama file
+                    console.log(`File Size: ${file.size} bytes`); // Ukuran file
+                    console.log(`File Type: ${file.type}`); // Tipe file
+
+                    // Menampilkan nama file di bawah input (opsional)
+                    const fileInfo = document.createElement('div');
+                    fileInfo.classList.add('text-muted', 'mt-1');
+                    fileInfo.textContent = `File Terpilih: ${file.name}`;
+
+                    // Hapus info sebelumnya jika ada
+                    const existingInfo = this.nextElementSibling;
+                    if (existingInfo && existingInfo.classList.contains('text-muted')) {
+                        existingInfo.remove();
+                    }
+
+                    // Tambahkan info baru setelah input
+                    this.insertAdjacentElement('afterend', fileInfo);
+                }
+            });
         });
     });
 </script>
