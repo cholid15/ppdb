@@ -37,7 +37,7 @@ $routes->get('afterlogin', 'Home::afterLogin');
 $routes->get('statistik', 'Home::admin');
 
 
-
+// COBA T
 
 $routes->get('gelombang_satu', 'Gelombang::satu');
 $routes->get('form', 'Form::index');
